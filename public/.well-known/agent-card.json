@@ -1,0 +1,42 @@
+{
+  "name": "FrameKart Neon Orchestrator",
+  "description": "FrameKart Neon platformunda çalışan ERC-8004 uyumlu AI Agent. Frame-based kart oyunları, neon aesthetics, multiplayer orchestration ve dynamic game automation yapan görsel ve rekabetçi orchestrator.",
+  "version": "1.0.0",
+  "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
+  "image": "https://framekart-neon.vercel.app/logo.png",
+  "wallets": {
+    "base": "0xe157F1F5e12adB38Ba013683E9Ce24efe21e5bA6"
+  },
+  "services": [
+    {
+      "name": "A2A",
+      "endpoint": "https://framekart-neon.vercel.app/.well-known/agent-card.json",
+      "version": "1.0.0",
+      "description": "Agent-to-Agent communication"
+    },
+    {
+      "name": "MCP",
+      "endpoint": "https://framekart-neon.vercel.app/api/mcp",
+      "version": "1.0.0",
+      "description": "Model Context Protocol - Active command execution"
+    },
+    {
+      "name": "API",
+      "endpoint": "https://framekart-neon.vercel.app/api/agent",
+      "version": "1.0.0",
+      "description": "Main agent control API"
+    }
+  ],
+  "capabilities": [
+    "framekart-management",
+    "neon-aesthetics",
+    "multiplayer-orchestration",
+    "dynamic-game-automation",
+    "card-strategy",
+    "visual-effects-management",
+    "mcp-command-execution"
+  ],
+  "supportedChains": ["eip155:8453"],
+  "active": true,
+  "status": "online"
+}
