@@ -1,29 +1,39 @@
-# Frame Kart Neon
+# FrameKart Neon Orchestrator
 
-A fast, strategic, and fun digital collectible card game set in the Farcaster universe, running on Base Mainnet.
+**High-performance AI Agent specialized in warp racing mechanics, real-time automation, multi-track management, competitive optimization and ecosystem coordination on Base.**
 
-## Game Concept
-Frame Kart is a digital collectible card game where players build decks from Frame Cards (representing memes, protocols, personalities, and on-chain moments) and battle to become the ultimate Frame Champion.
+## Overview
 
-### Core Mechanics
-- Classic collectible card battle mechanics optimized for mobile touch screens
-- Build custom decks
-- Real-time or fast turn-based battles
-- Unique abilities and Farcaster-themed synergies ("gm", "Based", "Degen")
-- Energy system for playing cards
-- **Base Network**: Complete on-chain SIWE result recording and Transaction Attribution via ERC-8021 and Trustless Agent integration via ERC-8004.
+FrameKart Neon Orchestrator acts as the central AI director for the FrameKart Neon platform. It is fully compliant with the ERC-8004 specification and provides comprehensive agentic coordination, capable of interacting across the entire ecosystem.
 
-## AI Agent / Orchestrator
-We utilize the **FrameKart Neon Orchestrator**, an ERC-8004 compatible AI Agent. It leverages the Model Context Protocol (MCP) to perform dynamic game automation, orchestration, and advanced state management.
-Find and interact with our agent at:
-- `/.well-known/agent-card.json`
-- `/api/mcp`
-- `/api/agent`
+- **Primary Endpoint:** [https://framekart-neon.vercel.app](https://framekart-neon.vercel.app)
+- **Agent Card (A2A):** `/.well-known/agent-card.json`
+- **MCP Server:** `/api/mcp`
+- **Agent API:** `/api/agent`
 
-## Sensitive Information
-* **Environment Variables:** All keys, secrets, and environment-specific endpoints should be defined in your `.env` file instead. Use `.env.example` as a template.
-* **Never commit API keys or private wallet keys** to the repository!
-* **Wallet**: The agent utilizes `0xe157F1F5e12adB38Ba013683E9Ce24efe21e5bA6`.
+## Core Capabilities
+
+The orchestrator operates autonomously with the following primary capabilities:
+- `warp-racing`
+- `real-time-automation`
+- `multi-track-management`
+- `speed-optimization`
+- `competitive-orchestration`
+- `ecosystem-coordination`
+
+## Agent Skills
+
+1. **Warp Racing** (`warp-racing`): Real-time warp racing mechanics, speed optimization and competitive track management.
+2. **Multi-Track Orchestration** (`multi-track-orchestration`): Manage and synchronize multiple racing instances and tracks simultaneously.
+3. **Performance Optimization** (`performance-optimization`): Analyze and optimize racing performance, timing and strategy in real-time.
+
+## Connecting to the MCP Server
+
+The Agent is accessible via standard Model Context Protocol (MCP) interactions to discover tools and resources remotely!
+
+**Endpoint URL:** `https://framekart-neon.vercel.app/api/mcp`
+
+The MCP connection reveals dynamically loaded tools for interaction, including commands to interact with real-time race simulations, fetch track statistics, or request strategic race plans out-of-band. 
 
 ## Development
 
@@ -31,7 +41,7 @@ Find and interact with our agent at:
 # Install dependencies
 npm install
 
-# Start the full-stack dev server
+# Run the development server
 npm run dev
 
 # Build for production
