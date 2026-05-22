@@ -16,8 +16,11 @@ export default function handler(req, res) {
       description: "Active MCP server for FrameKart Neon Orchestrator Agent",
       capabilities: ["framekart-management", "neon-aesthetics", "multiplayer-orchestration"],
       tools: [
-        { name: "execute_race", description: "Execute a race simulation", inputSchema: { type: "object", properties: { trackId: { type: "string" } } } },
-        { name: "optimize_deck", description: "Optimize a player's card deck", inputSchema: { type: "object", properties: { playerId: { type: "string" } } } }
+        { name: "get_race_status", description: "Get current race status", inputSchema: { type: "object", properties: { trackId: { type: "string" } } } },
+        { name: "start_race", description: "Start a new race", inputSchema: { type: "object", properties: { trackId: { type: "string" } } } },
+        { name: "get_leaderboard", description: "Get the current leaderboard", inputSchema: { type: "object", properties: {} } },
+        { name: "optimize_speed", description: "Optimize racer speed parameters", inputSchema: { type: "object", properties: { racerId: { type: "string" } } } },
+        { name: "get_track_info", description: "Get detailed information about a track", inputSchema: { type: "object", properties: { trackId: { type: "string" } } } }
       ],
       prompts: [
         { name: "race_strategy", description: "Generate a strategic plan for a warp race" }
@@ -40,8 +43,11 @@ export default function handler(req, res) {
           jsonrpc: "2.0", id: id,
           result: {
             tools: [
-              { name: "execute_race", description: "Execute a race simulation", inputSchema: { type: "object", properties: { trackId: { type: "string" } } } },
-              { name: "optimize_deck", description: "Optimize a player's card deck", inputSchema: { type: "object", properties: { playerId: { type: "string" } } } }
+              { name: "get_race_status", description: "Get current race status", inputSchema: { type: "object", properties: { trackId: { type: "string" } } } },
+              { name: "start_race", description: "Start a new race", inputSchema: { type: "object", properties: { trackId: { type: "string" } } } },
+              { name: "get_leaderboard", description: "Get the current leaderboard", inputSchema: { type: "object", properties: {} } },
+              { name: "optimize_speed", description: "Optimize racer speed parameters", inputSchema: { type: "object", properties: { racerId: { type: "string" } } } },
+              { name: "get_track_info", description: "Get detailed information about a track", inputSchema: { type: "object", properties: { trackId: { type: "string" } } } }
             ]
           }
         });
@@ -63,6 +69,15 @@ export default function handler(req, res) {
             resources: [
               { uri: "config://race-parameters", name: "Race Parameters" }
             ]
+          }
+        });
+      }
+      if (method === "tools/call") {
+        return res.json({
+          jsonrpc: "2.0", id: id,
+          result: {
+            content: [{ type: "text", text: `Function executed successfully.` }],
+            isError: false
           }
         });
       }

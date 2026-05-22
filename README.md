@@ -11,9 +11,12 @@ FrameKart Neon Orchestrator acts as the central AI director for the FrameKart Ne
 - **MCP Server:** `/api/mcp`
 - **Agent API:** `/api/agent`
 
-## Core Capabilities
+## Tech Stack
+- Next.js 14 (App Router)
+- Web3 Ecosystem (ERC-8004, EVM, Base)
+- Model Context Protocol (MCP)
 
-The orchestrator operates autonomously with the following primary capabilities:
+## capabilities
 - `warp-racing`
 - `real-time-automation`
 - `multi-track-management`
@@ -27,15 +30,19 @@ The orchestrator operates autonomously with the following primary capabilities:
 2. **Multi-Track Orchestration** (`multi-track-orchestration`): Manage and synchronize multiple racing instances and tracks simultaneously.
 3. **Performance Optimization** (`performance-optimization`): Analyze and optimize racing performance, timing and strategy in real-time.
 
-## Connecting to the MCP Server
+## MCP Connection Guide
 
-The Agent is accessible via standard Model Context Protocol (MCP) interactions to discover tools and resources remotely!
+The Agent is constructed around standard Model Context Protocol (MCP) integrations:
 
 **Endpoint URL:** `https://framekart-neon.vercel.app/api/mcp`
 
-The MCP connection reveals dynamically loaded tools for interaction, including commands to interact with real-time race simulations, fetch track statistics, or request strategic race plans out-of-band. 
+The MCP connection allows any generic MCP client to discover tools dynamically and call execution flows to interact with current track statistics and racing parameters out-of-band. 
 
-## Development
+## Agent Registration
+The AI orchestrator natively supports the ERC-8004 agent card format. 
+Its identity and verifiable capabilities can be found mapped fully to the `.well-known/agent-card.json` endpoint. It leverages ecosystem trust by registering across compatible smart contracts defining agent limits and identities on Base.
+
+## Running Locally
 
 ```bash
 # Install dependencies
