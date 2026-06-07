@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion';
-import { Trophy, ArrowLeft, UploadCloud } from 'lucide-react';
+import { Trophy, ArrowLeft, UploadCloud, Sun } from 'lucide-react';
 import { useGameStore } from '../game/store';
-import { Button } from '../components/ui/Button';
-import { useAccount, useSignMessage } from 'wagmi';
+import { useAccount, useSignMessage, useSendTransaction } from 'wagmi';
+import { parseEther } from 'viem';
 
 export function VictoryScreen() {
   const { playerHealth, opponentHealth, resetGame } = useGameStore();
   const { address } = useAccount();
   const { signMessageAsync } = useSignMessage();
+  const { sendTransaction } = useSendTransaction();
   
   const isVictory = opponentHealth <= 0;
   
@@ -19,13 +20,7 @@ export function VictoryScreen() {
     
     try {
       // Create SIWE-like message for the battle result
-      const message = `I verify my Frame Kart match result on Base Mainnet.
-User: ${address}
-Result: ${isVictory ? 'Victory' : 'Defeat'}
-Score: ${playerHealth} HP remaining
-Timestamp: ${new Date().toISOString()}
-App ID: 691a1313669aee60603bddd3
-Builder: bc_606ahbgu`;
+      const message = `I verify my Frame Kart match result on Base Mainnet.\nUser: ${address}\nResult: ${isVictory ? 'Victory' : 'Defeat'}\nScore: ${playerHealth} HP remaining\nTimestamp: ${new Date().toISOString()}\nApp ID: 691a1313669aee60603bddd3\nBuilder: bc_606ahbgu`;
 
       const signature = await signMessageAsync({ account: address, message });
       
@@ -37,6 +32,19 @@ Builder: bc_606ahbgu`;
       alert("Failed to record on-chain");
     }
   };
+
+  const handleSayGM = () => {
+    if (!address) return;
+    try {
+      sendTransaction({
+        to: '0xc35B9997B63B1CE14f8F513f7eddD9a7ABbB33d7',
+        value: parseEther('0'),
+        data: '0x',
+      });
+    } catch(e) {
+      console.error(e);
+    }
+  }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-[#0a050f] text-white font-sans p-6 relative overflow-hidden">
@@ -65,6 +73,14 @@ Builder: bc_606ahbgu`;
            <button className="w-full h-14 bg-gradient-to-tr from-cyan-400 to-blue-500 rounded-xl shadow-[0_0_15px_rgba(34,211,238,0.4)] flex items-center justify-center gap-2 border-2 border-white/30 hover:brightness-110 transition-all font-display text-lg font-bold italic text-white uppercase" onClick={handleRecordOnChain}>
              <UploadCloud className="w-5 h-5" />
              Record on-chain
+           </button>
+           
+           <button 
+             onClick={handleSayGM}
+             className="w-full h-14 rounded-xl bg-[#E8A020]/20 hover:bg-[#E8A020]/30 border border-[#E8A020]/40 text-[#E8A020] transition-colors flex items-center justify-center gap-2 font-['Cinzel'] text-sm font-bold uppercase"
+           >
+             <Sun className="w-5 h-5" />
+             Say GM
            </button>
            
            <button className="w-full h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center gap-2 hover:bg-white/10 transition-colors font-bold tracking-widest uppercase text-xs text-white/70" onClick={resetGame}>
